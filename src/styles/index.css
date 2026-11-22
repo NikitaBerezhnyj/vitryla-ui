@@ -1,0 +1,45 @@
+@layer vitryla.tokens, vitryla.base, vitryla.components;
+
+@layer vitryla.tokens {
+    :root {
+        color-scheme: light dark;
+
+        --vitryla-color-background: light-dark(#ffffff, #0a0a0a);
+        --vitryla-color-foreground: light-dark(#0a0a0a, #fafafa);
+        --vitryla-color-muted: light-dark(#f4f4f5, #1c1c1f);
+        --vitryla-color-muted-foreground: light-dark(#52525b, #a1a1aa);
+        --vitryla-color-border: light-dark(#e4e4e7, #27272a);
+        --vitryla-color-primary: light-dark(#18181b, #fafafa);
+        --vitryla-color-primary-foreground: light-dark(#fafafa, #18181b);
+        --vitryla-color-danger: light-dark(#b91c1c, #f87171);
+        --vitryla-color-danger-foreground: light-dark(#ffffff, #0a0a0a);
+        --vitryla-color-focus-ring: light-dark(#2563eb, #60a5fa);
+
+        --vitryla-radius-sm: 4px;
+        --vitryla-radius-md: 8px;
+        --vitryla-radius-lg: 12px;
+
+        --vitryla-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        --vitryla-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    [data-vitryla-theme='light'] {
+        color-scheme: light;
+    }
+
+    [data-vitryla-theme='dark'] {
+        color-scheme: dark;
+    }
+
+    [data-vitryla-theme='system'] {
+        color-scheme: light dark;
+    }
+}
+
+@layer vitryla.base {
+    [data-vitryla-theme] {
+        background-color: var(--vitryla-color-background);
+        color: var(--vitryla-color-foreground);
+        font-family: var(--vitryla-font-sans);
+    }
+}

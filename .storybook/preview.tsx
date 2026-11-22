@@ -1,7 +1,10 @@
 import type { Preview } from "@storybook/react-vite";
+import { VitrylaProvider, type Theme } from "../src";
 
 const preview: Preview = {
   parameters: {
+    layout: "fullscreen",
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -15,7 +18,34 @@ const preview: Preview = {
       // 'off' - skip a11y checks entirely
       test: "todo"
     }
-  }
+  },
+
+  globalTypes: {
+    theme: {
+      description: "Тема Vitryla",
+      toolbar: {
+        title: "Theme",
+        icon: "circlehollow",
+        items: ["system", "light", "dark"],
+        dynamicTitle: true
+      }
+    }
+  },
+
+  initialGlobals: {
+    theme: "light"
+  },
+
+  decorators: [
+    (Story, context) => (
+      <VitrylaProvider
+        theme={context.globals.theme as Theme}
+        style={{ minHeight: "100vh", padding: "1rem" }}
+      >
+        <Story />
+      </VitrylaProvider>
+    )
+  ]
 };
 
 export default preview;

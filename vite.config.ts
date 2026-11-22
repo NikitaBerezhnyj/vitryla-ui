@@ -9,7 +9,7 @@ import { playwright } from "@vitest/browser-playwright";
 export default defineConfig({
   plugins: [react(), dts({ tsconfigPath: "./tsconfig.build.json" })],
   build: {
-    lib: { entry: "src/index.ts", formats: ["es"] },
+    lib: { entry: "src/index.ts", formats: ["es"], cssFileName: "styles" },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],
       output: {

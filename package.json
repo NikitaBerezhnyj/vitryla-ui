@@ -7,7 +7,7 @@
   "keywords": [],
   "license": "MIT",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": true,
   "files": [
     "dist"
   ],
@@ -17,7 +17,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "peerDependencies": {
     "react": ">=18",

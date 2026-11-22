@@ -3,19 +3,19 @@ import userEvent from "@testing-library/user-event";
 import { Button } from "./button";
 
 describe("Button", () => {
-  it("викликає onClick по кліку", async () => {
+  it("calls onClick when clicked", async () => {
     const onClick = vi.fn();
     render(<Button onClick={onClick}>Save</Button>);
     await userEvent.click(screen.getByRole("button", { name: "Save" }));
     expect(onClick).toHaveBeenCalledOnce();
   });
 
-  it('за замовчуванням type="button"', () => {
+  it('defaults to type="button"', () => {
     render(<Button>Save</Button>);
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
   });
 
-  it("активується з клавіатури", async () => {
+  it("can be activated using the keyboard", async () => {
     const onClick = vi.fn();
     render(<Button onClick={onClick}>Save</Button>);
     await userEvent.tab();
