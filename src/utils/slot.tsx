@@ -36,7 +36,7 @@ function mergeProps(slotProps: AnyProps, childProps: AnyProps): AnyProps {
 
 export function Slot({ children, ref, ...slotProps }: SlotProps) {
   if (!isValidElement<AnyProps & { ref?: Ref<HTMLElement> }>(children)) {
-    throw new Error("Slot очікує один React-елемент як дочірній");
+    throw new Error("Slot expects a single React element as its child");
   }
 
   return cloneElement(children, {
