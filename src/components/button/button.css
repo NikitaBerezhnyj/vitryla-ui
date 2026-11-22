@@ -1,0 +1,94 @@
+@layer vitryla.components {
+    .vitryla-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid var(--vitryla-button-border, transparent);
+        border-radius: var(--vitryla-radius-md);
+        background-color: var(--vitryla-button-bg);
+        color: var(--vitryla-button-fg);
+        font: inherit;
+        font-weight: 500;
+        line-height: 1.25;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 120ms ease;
+    }
+
+    .vitryla-button:hover:not(:disabled, [aria-disabled='true']) {
+        background-color: var(--vitryla-button-bg-hover);
+    }
+
+    .vitryla-button:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: 2px;
+    }
+
+    .vitryla-button:disabled,
+    .vitryla-button[aria-disabled='true'] {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .vitryla-button[data-variant='primary'] {
+        --vitryla-button-bg: var(--vitryla-color-primary);
+        --vitryla-button-bg-hover: color-mix(in srgb,
+                var(--vitryla-color-primary) 85%,
+                var(--vitryla-color-background));
+        --vitryla-button-fg: var(--vitryla-color-primary-foreground);
+    }
+
+    .vitryla-button[data-variant='secondary'] {
+        --vitryla-button-bg: var(--vitryla-color-muted);
+        --vitryla-button-bg-hover: color-mix(in srgb,
+                var(--vitryla-color-foreground) 8%,
+                var(--vitryla-color-muted));
+        --vitryla-button-fg: var(--vitryla-color-foreground);
+        --vitryla-button-border: var(--vitryla-color-border);
+    }
+
+    .vitryla-button[data-variant='ghost'] {
+        --vitryla-button-bg: transparent;
+        --vitryla-button-bg-hover: var(--vitryla-color-muted);
+        --vitryla-button-fg: var(--vitryla-color-foreground);
+    }
+
+    .vitryla-button[data-variant='danger'] {
+        --vitryla-button-bg: var(--vitryla-color-danger);
+        --vitryla-button-bg-hover: color-mix(in srgb,
+                var(--vitryla-color-danger) 85%,
+                var(--vitryla-color-background));
+        --vitryla-button-fg: var(--vitryla-color-danger-foreground);
+    }
+
+    .vitryla-button[data-size='sm'] {
+        min-height: 2rem;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .vitryla-button[data-size='md'] {
+        min-height: 2.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+    .vitryla-button[data-size='lg'] {
+        min-height: 3rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .vitryla-button {
+            transition: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        .vitryla-button {
+            border-color: ButtonText;
+        }
+    }
+}

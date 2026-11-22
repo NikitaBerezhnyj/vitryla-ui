@@ -1,0 +1,16 @@
+@layer vitryla.components {
+    .vitryla-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.25;
+    }
+
+    .vitryla-label[data-disabled] {
+        opacity: 0.5;
+    }
+
+    .vitryla-label-required {
+        margin-inline-start: 0.25rem;
+        color: var(--vitryla-color-danger);
+    }
+}

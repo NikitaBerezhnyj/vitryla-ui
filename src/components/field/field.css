@@ -1,0 +1,21 @@
+@layer vitryla.components {
+    .vitryla-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+    }
+
+    .vitryla-field-description,
+    .vitryla-field-error {
+        margin: 0;
+        font-size: 0.875rem;
+    }
+
+    .vitryla-field-description {
+        color: var(--vitryla-color-muted-foreground);
+    }
+
+    .vitryla-field-error {
+        color: var(--vitryla-color-danger);
+    }
+}

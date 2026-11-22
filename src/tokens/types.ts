@@ -12,7 +12,8 @@ type ColorToken =
   | "primaryForeground"
   | "danger"
   | "dangerForeground"
-  | "focusRing";
+  | "focusRing"
+  | "inputBorder";
 
 export interface TokenOverrides {
   color?: Partial<Record<ColorToken, ColorValue>>;

@@ -1,0 +1,32 @@
+@layer vitryla.components {
+    .vitryla-input {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 2.5rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--vitryla-color-input-border);
+        border-radius: var(--vitryla-radius-md);
+        background-color: var(--vitryla-color-background);
+        color: var(--vitryla-color-foreground);
+        font: inherit;
+    }
+
+    .vitryla-input::placeholder {
+        color: var(--vitryla-color-muted-foreground);
+    }
+
+    .vitryla-input:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: 1px;
+        border-color: var(--vitryla-color-focus-ring);
+    }
+
+    .vitryla-input[aria-invalid='true'] {
+        border-color: var(--vitryla-color-danger);
+    }
+
+    .vitryla-input:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

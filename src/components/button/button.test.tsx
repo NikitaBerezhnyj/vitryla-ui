@@ -38,4 +38,20 @@ describe("Button", () => {
     await userEvent.click(link);
     expect(onClick).toHaveBeenCalledOnce();
   });
+
+  it("sets variant and size as data attributes", () => {
+    render(
+      <Button variant="danger" size="lg">
+        Delete
+      </Button>
+    );
+    const button = screen.getByRole("button");
+    expect(button).toHaveAttribute("data-variant", "danger");
+    expect(button).toHaveAttribute("data-size", "lg");
+  });
+
+  it("keeps the base class and merges a custom className", () => {
+    render(<Button className="custom">Save</Button>);
+    expect(screen.getByRole("button")).toHaveClass("vitryla-button", "custom");
+  });
 });
