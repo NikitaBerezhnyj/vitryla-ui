@@ -21,8 +21,8 @@
     "./styles.css": "./dist/styles.css"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
