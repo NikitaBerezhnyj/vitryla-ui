@@ -1,0 +1,89 @@
+name: Build and Release Vitryla UI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build library
+        run: npm run build
+
+      - name: Build Storybook
+        run: npm run build:storybook
+
+      - name: Extract package version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Package version: $VERSION"
+
+      - name: Check existing release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="v${{ steps.version.outputs.version }}"
+
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Release $VERSION already exists."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Package library
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release.outputs.exists == 'false'
+        run: npm pack
+
+      - name: Archive Storybook
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release.outputs.exists == 'false'
+        run: tar -czf "storybook-static-${{ steps.version.outputs.version }}.tar.gz" -C storybook-static .
+
+      - name: Publish GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Vitryla UI v${{ steps.version.outputs.version }}
+          target_commitish: main
+          generate_release_notes: true
+          files: |
+            vitryla-ui-*.tgz
+            storybook-static-*.tar.gz
+          fail_on_unmatched_files: true
+          token: ${{ github.token }}
