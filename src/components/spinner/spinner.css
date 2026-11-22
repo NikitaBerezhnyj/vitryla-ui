@@ -1,0 +1,38 @@
+@layer vitryla.components {
+    .vitryla-spinner {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: vitryla-spin 700ms linear infinite;
+    }
+
+    .vitryla-spinner[data-size='sm'] {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+
+    .vitryla-spinner[data-size='md'] {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+    }
+
+    .vitryla-spinner[data-size='lg'] {
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border-width: 3px;
+    }
+
+    @keyframes vitryla-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .vitryla-spinner {
+            animation-duration: 2s;
+        }
+    }
+}

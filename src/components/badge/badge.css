@@ -1,0 +1,37 @@
+@layer vitryla.components {
+    .vitryla-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.125rem 0.5rem;
+        border: 1px solid var(--vitryla-badge-border, transparent);
+        border-radius: 999px;
+        background-color: var(--vitryla-badge-bg);
+        color: var(--vitryla-badge-fg);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        white-space: nowrap;
+    }
+
+    .vitryla-badge[data-variant='neutral'] {
+        --vitryla-badge-bg: var(--vitryla-color-muted);
+        --vitryla-badge-fg: var(--vitryla-color-foreground);
+        --vitryla-badge-border: var(--vitryla-color-border);
+    }
+
+    .vitryla-badge[data-variant='primary'] {
+        --vitryla-badge-bg: var(--vitryla-color-primary);
+        --vitryla-badge-fg: var(--vitryla-color-primary-foreground);
+    }
+
+    .vitryla-badge[data-variant='danger'] {
+        --vitryla-badge-bg: var(--vitryla-color-danger);
+        --vitryla-badge-fg: var(--vitryla-color-danger-foreground);
+    }
+
+    @media (forced-colors: active) {
+        .vitryla-badge {
+            border-color: CanvasText;
+        }
+    }
+}

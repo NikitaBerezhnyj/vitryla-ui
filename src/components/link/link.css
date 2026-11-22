@@ -1,0 +1,17 @@
+@layer vitryla.components {
+    .vitryla-link {
+        color: var(--vitryla-color-primary);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+        border-radius: var(--vitryla-radius-sm);
+    }
+
+    .vitryla-link:hover {
+        text-decoration-thickness: 2px;
+    }
+
+    .vitryla-link:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: 2px;
+    }
+}

@@ -1,0 +1,27 @@
+@layer vitryla.components {
+    .vitryla-heading {
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .vitryla-heading[data-size='sm'] {
+        font-size: 1rem;
+    }
+
+    .vitryla-heading[data-size='md'] {
+        font-size: 1.125rem;
+    }
+
+    .vitryla-heading[data-size='lg'] {
+        font-size: 1.25rem;
+    }
+
+    .vitryla-heading[data-size='xl'] {
+        font-size: 1.5rem;
+    }
+
+    .vitryla-heading[data-size='2xl'] {
+        font-size: 2rem;
+    }
+}
