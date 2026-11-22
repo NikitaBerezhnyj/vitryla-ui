@@ -71,4 +71,9 @@ describe("Field", () => {
     expect(() => render(<FieldDescription>Hint</FieldDescription>)).toThrow(/Field/);
     spy.mockRestore();
   });
+
+  it("sets data-orientation on the root element", () => {
+    render(<Field orientation="horizontal" data-testid="field" />);
+    expect(screen.getByTestId("field")).toHaveAttribute("data-orientation", "horizontal");
+  });
 });

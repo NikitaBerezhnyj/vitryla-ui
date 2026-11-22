@@ -1,0 +1,60 @@
+@layer vitryla.components {
+    .vitryla-radio {
+        appearance: none;
+        display: inline-grid;
+        place-content: center;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+        margin: 0;
+        border: 1px solid var(--vitryla-color-input-border);
+        border-radius: 50%;
+        background-color: var(--vitryla-color-background);
+        cursor: pointer;
+    }
+
+    .vitryla-radio::before {
+        content: '';
+        inline-size: 0.625rem;
+        block-size: 0.625rem;
+        border-radius: 50%;
+        background-color: var(--vitryla-color-primary);
+        transform: scale(0);
+        transition: transform 120ms ease;
+    }
+
+    .vitryla-radio:checked {
+        border-color: var(--vitryla-color-primary);
+    }
+
+    .vitryla-radio:checked::before {
+        transform: scale(1);
+    }
+
+    .vitryla-radio:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: 2px;
+    }
+
+    .vitryla-radio[aria-invalid='true'] {
+        border-color: var(--vitryla-color-danger);
+    }
+
+    .vitryla-radio:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .vitryla-radio::before {
+            transition: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        .vitryla-radio::before {
+            background-color: CanvasText;
+        }
+    }
+}

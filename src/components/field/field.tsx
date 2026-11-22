@@ -7,12 +7,14 @@ export interface FieldProps extends ComponentProps<"div"> {
   invalid?: boolean;
   required?: boolean;
   disabled?: boolean;
+  orientation?: "vertical" | "horizontal";
 }
 
 export function Field({
   invalid = false,
   required = false,
   disabled = false,
+  orientation = "vertical",
   className,
   ...props
 }: FieldProps) {
@@ -48,6 +50,7 @@ export function Field({
       <div
         {...props}
         className={cx("vitryla-field", className)}
+        data-orientation={orientation}
         data-invalid={invalid || undefined}
         data-disabled={disabled || undefined}
       />

@@ -1,0 +1,6 @@
+@layer vitryla.components {
+    .vitryla-textarea {
+        min-height: 5rem;
+        resize: vertical;
+    }
+}

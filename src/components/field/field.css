@@ -5,6 +5,23 @@
         gap: 0.375rem;
     }
 
+    .vitryla-field[data-orientation='horizontal'] {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 0.75rem;
+        row-gap: 0.25rem;
+    }
+
+    .vitryla-field[data-orientation='horizontal']>* {
+        grid-column: 2;
+    }
+
+    .vitryla-field[data-orientation='horizontal']> :is(.vitryla-checkbox, .vitryla-radio, .vitryla-switch) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
     .vitryla-field-description,
     .vitryla-field-error {
         margin: 0;
