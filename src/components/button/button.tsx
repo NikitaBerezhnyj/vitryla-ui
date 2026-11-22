@@ -1,9 +1,13 @@
-import { forwardRef, type ButtonHTMLAttributes } from "react";
+import type { ComponentProps, Ref } from "react";
+import { Slot } from "../../utils";
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+export interface ButtonProps extends ComponentProps<"button"> {
+  asChild?: boolean;
+}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ type = "button", ...props }, ref) => <button ref={ref} type={type} {...props} />
-);
-
-Button.displayName = "Button";
+export function Button({ asChild = false, type = "button", ref, ...props }: ButtonProps) {
+  if (asChild) {
+    return <Slot {...props} ref={ref as Ref<HTMLElement>} />;
+  }
+  return <button ref={ref} type={type} {...props} />;
+}

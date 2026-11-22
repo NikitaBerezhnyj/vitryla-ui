@@ -22,4 +22,20 @@ describe("Button", () => {
     await userEvent.keyboard("{Enter}");
     expect(onClick).toHaveBeenCalledOnce();
   });
+
+  it("asChild renders the child element instead of a button", async () => {
+    const onClick = vi.fn();
+    render(
+      <Button asChild onClick={onClick}>
+        <a href="#docs">Docs</a>
+      </Button>
+    );
+
+    const link = screen.getByRole("link", { name: "Docs" });
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    expect(link).not.toHaveAttribute("type");
+
+    await userEvent.click(link);
+    expect(onClick).toHaveBeenCalledOnce();
+  });
 });
