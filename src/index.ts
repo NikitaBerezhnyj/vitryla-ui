@@ -17,6 +17,7 @@ export * from "./components/dialog";
 export * from "./components/popover";
 export * from "./components/tooltip";
 export * from "./components/tabs";
+export * from "./components/select";
 
 export * from "./provider";
 

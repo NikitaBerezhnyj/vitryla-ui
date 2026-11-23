@@ -13,6 +13,7 @@ import {
 import { Slot, composeEventHandlers, cx, mergeRefs, useControllableState } from "../../utils";
 import { Heading, type HeadingProps } from "../heading";
 import "./dialog.css";
+import { PortalContainerContext } from "../../provider/portal-container";
 
 interface DialogContextValue {
   open: boolean;
@@ -70,7 +71,6 @@ export function Dialog({
 }
 
 export interface DialogButtonProps extends ComponentProps<"button"> {
-  /** Render props onto the child element instead of a <button>. */
   asChild?: boolean;
 }
 export type DialogTriggerProps = DialogButtonProps;
@@ -113,8 +113,9 @@ export function DialogContent({
   const { open, setOpen, titleId, descriptionId, hasDescription } =
     useDialogContext("DialogContent");
   const innerRef = useRef<HTMLDialogElement>(null);
+  const [element, setElement] = useState<HTMLDialogElement | null>(null);
+  const mergedRef = useMemo(() => mergeRefs(ref, innerRef, setElement), [ref]);
 
-  // The state is the source of truth, the native <dialog> follows it
   useEffect(() => {
     const dialog = innerRef.current;
     if (!dialog) return;
@@ -128,7 +129,7 @@ export function DialogContent({
       aria-labelledby={titleId}
       aria-describedby={hasDescription ? descriptionId : undefined}
       {...props}
-      ref={mergeRefs(ref, innerRef)}
+      ref={mergedRef}
       className={cx("vitryla-dialog", className)}
       onCancel={composeEventHandlers(onCancel, event => {
         event.preventDefault();
@@ -139,7 +140,11 @@ export function DialogContent({
         if (event.target === event.currentTarget) setOpen(false);
       })}
     >
-      <div className="vitryla-dialog-body">{children}</div>
+      <div className="vitryla-dialog-body">
+        <PortalContainerContext.Provider value={element}>
+          {children}
+        </PortalContainerContext.Provider>
+      </div>
     </dialog>
   );
 }

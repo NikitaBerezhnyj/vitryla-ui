@@ -39,6 +39,9 @@ export default defineConfig({
             configDir: path.join(import.meta.dirname, ".storybook")
           })
         ],
+        optimizeDeps: {
+          include: ["@base-ui/react/select"]
+        },
         test: {
           name: "storybook",
           browser: {
