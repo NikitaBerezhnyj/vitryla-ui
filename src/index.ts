@@ -18,6 +18,7 @@ export * from "./components/popover";
 export * from "./components/tooltip";
 export * from "./components/tabs";
 export * from "./components/select";
+export * from "./components/combobox";
 
 export * from "./provider";
 

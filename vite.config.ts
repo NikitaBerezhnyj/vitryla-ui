@@ -40,7 +40,7 @@ export default defineConfig({
           })
         ],
         optimizeDeps: {
-          include: ["@base-ui/react/select"]
+          include: ["@base-ui/react/select", "@base-ui/react/combobox"]
         },
         test: {
           name: "storybook",

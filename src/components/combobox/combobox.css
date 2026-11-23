@@ -1,0 +1,85 @@
+@layer vitryla.components {
+    .vitryla-combobox-group {
+        position: relative;
+    }
+
+    .vitryla-combobox-input {
+        padding-inline-end: 4rem;
+    }
+
+    .vitryla-combobox-actions {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .vitryla-combobox-button {
+        position: relative;
+        inline-size: 2rem;
+        block-size: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--vitryla-color-foreground);
+        cursor: pointer;
+    }
+
+    .vitryla-combobox-button:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: -2px;
+        border-radius: var(--vitryla-radius-sm);
+    }
+
+    .vitryla-combobox-button:disabled,
+    .vitryla-combobox-button[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .vitryla-combobox-clear::before,
+    .vitryla-combobox-clear::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        inline-size: 0.75rem;
+        block-size: 2px;
+        background-color: currentColor;
+    }
+
+    .vitryla-combobox-clear::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .vitryla-combobox-clear::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .vitryla-combobox-trigger::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translate(-50%, -75%) rotate(45deg);
+    }
+
+    .vitryla-combobox-trigger[data-popup-open]::after {
+        transform: translate(-50%, -25%) rotate(-135deg);
+    }
+
+    .vitryla-combobox-empty {
+        padding: 0.5rem 0.625rem;
+        color: var(--vitryla-color-muted-foreground);
+        font-size: 0.875rem;
+    }
+
+    .vitryla-select-list[data-empty] {
+        padding: 0;
+    }
+}
