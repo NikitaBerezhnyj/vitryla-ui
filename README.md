@@ -2,6 +2,8 @@
 
 Vitryla UI is a composable React component library built with TypeScript, focused on accessibility, native web APIs, and flexible customization.
 
+[npm](https://www.npmjs.com/package/vitryla-ui) · [Documentation](https://nikitaberezhnyj.github.io/vitryla-ui/) · [Storybook](https://nikitaberezhnyj.github.io/vitryla-ui/storybook)
+
 Unlike traditional component libraries, Vitryla UI provides both ready-to-use components and reusable headless primitives that can be combined to build custom components.
 
 The library aims to provide:
