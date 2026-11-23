@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-Open [Storybook](https://<user>.github.io/vitryla-ui/storybook/) to see every component with its props, states and accessibility checks.
+Open [Storybook](https://NikitaBerezhnyj.github.io/vitryla-ui/storybook/) to see every component with its props, states and accessibility checks.
 
 | Component                                  | Built on                                             |
 | ------------------------------------------ | ---------------------------------------------------- |

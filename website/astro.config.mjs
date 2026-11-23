@@ -9,7 +9,9 @@ export default defineConfig({
     starlight({
       title: "Vitryla UI",
       description: "A React UI kit with composable primitives, theming and accessibility defaults.",
-      social: [{ icon: "github", label: "GitHub", href: "https://github.com/<user>/vitryla-ui" }],
+      social: [
+        { icon: "github", label: "GitHub", href: "https://github.com/NikitaBerezhnyj/vitryla-ui" }
+      ],
       sidebar: [
         {
           label: "Getting started",
@@ -25,7 +27,7 @@ export default defineConfig({
         },
         {
           label: "Storybook",
-          link: "https://<user>.github.io/vitryla-ui/storybook/",
+          link: "https://NikitaBerezhnyj.github.io/vitryla-ui/storybook/",
           attrs: { target: "_blank" }
         }
       ]
