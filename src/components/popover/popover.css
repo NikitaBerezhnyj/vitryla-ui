@@ -1,0 +1,22 @@
+@layer vitryla.components {
+    .vitryla-popover {
+        box-sizing: border-box;
+        max-inline-size: min(22rem, calc(100vw - 1rem));
+        padding: 1rem;
+        border: 1px solid var(--vitryla-color-border);
+        border-radius: var(--vitryla-radius-lg);
+        background-color: var(--vitryla-color-background);
+        color: var(--vitryla-color-foreground);
+        font-family: var(--vitryla-font-sans);
+        box-shadow: 0 4px 24px rgb(0 0 0 / 20%);
+    }
+
+    @supports (position-area: block-end) {
+        .vitryla-popover {
+            margin: 0;
+            margin-block: 0.5rem;
+            position-area: block-end;
+            position-try-fallbacks: flip-block;
+        }
+    }
+}

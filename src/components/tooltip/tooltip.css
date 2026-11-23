@@ -1,0 +1,35 @@
+@layer vitryla.components {
+    .vitryla-tooltip {
+        box-sizing: border-box;
+        max-inline-size: 20rem;
+        padding: 0.375rem 0.625rem;
+        border: 0;
+        border-radius: var(--vitryla-radius-md);
+        background-color: var(--vitryla-color-foreground);
+        color: var(--vitryla-color-background);
+        font-family: var(--vitryla-font-sans);
+        font-size: 0.875rem;
+        line-height: 1.25;
+    }
+
+    @supports (position-area: block-start) {
+        .vitryla-tooltip {
+            margin: 0;
+            margin-block: 0.375rem;
+            position-area: block-start;
+            position-try-fallbacks: flip-block;
+        }
+    }
+
+    @supports not (position-area: block-start) {
+        .vitryla-tooltip {
+            display: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        .vitryla-tooltip {
+            border: 1px solid CanvasText;
+        }
+    }
+}
