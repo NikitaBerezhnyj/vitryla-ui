@@ -6,8 +6,11 @@ import dts from "vite-plugin-dts";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 
-export default defineConfig({
-  plugins: [react(), dts({ tsconfigPath: "./tsconfig.build.json", bundleTypes: true })],
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    react(),
+    ...(mode === "lib" ? [dts({ tsconfigPath: "./tsconfig.build.json", bundleTypes: true })] : [])
+  ],
   build: {
     lib: { entry: "src/index.ts", formats: ["es"], cssFileName: "styles" },
     rollupOptions: {
@@ -54,4 +57,4 @@ export default defineConfig({
       }
     ]
   }
-});
+}));
