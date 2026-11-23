@@ -1,0 +1,60 @@
+name: Deploy docs for Vitryla UI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/**'
+      - 'src/**'
+      - '.storybook/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install library dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build:storybook
+
+      - name: Build the website and add Storybook under /storybook
+        uses: withastro/action@v6
+        with:
+          path: website
+          build-cmd: npm run build && cp -r ../storybook-static dist/storybook
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

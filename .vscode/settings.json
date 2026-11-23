@@ -3,12 +3,14 @@
         "autodocs",
         "circlehollow",
         "describedby",
+        "github",
         "noninteractive",
         "sonarjs",
         "testid",
         "theming",
         "unhover",
         "vitryla",
-        "Vitryla"
+        "Vitryla",
+        "withastro"
     ]
 }

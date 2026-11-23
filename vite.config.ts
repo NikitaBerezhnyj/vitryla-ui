@@ -7,7 +7,7 @@ import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 
 export default defineConfig({
-  plugins: [react(), dts({ tsconfigPath: "./tsconfig.build.json" })],
+  plugins: [react(), dts({ tsconfigPath: "./tsconfig.build.json", bundleTypes: true })],
   build: {
     lib: { entry: "src/index.ts", formats: ["es"], cssFileName: "styles" },
     rollupOptions: {

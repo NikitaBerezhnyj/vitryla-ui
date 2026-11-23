@@ -3,8 +3,18 @@ name: Build and Release Vitryla UI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'website/**'
+      - 'docs/**'
+      - '*.md'
+      - '.github/workflows/docs.yml'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'website/**'
+      - 'docs/**'
+      - '*.md'
+      - '.github/workflows/docs.yml'
 
 permissions:
   contents: write
@@ -43,6 +53,9 @@ jobs:
 
       - name: Build library
         run: npm run build
+      
+      - name: Check package
+        run: npm run check:package
 
       - name: Build Storybook
         run: npm run build:storybook

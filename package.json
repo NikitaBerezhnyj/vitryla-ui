@@ -4,7 +4,23 @@
   "private": true,
   "description": "Vitryla UI: React UI kit with composable primitives, theming and accessibility defaults",
   "author": "NikitaBerezhnyj",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "accessibility",
+    "a11y",
+    "theming"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikitaBerezhnyj/vitryla-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NikitaBerezhnyj/vitryla-ui/issues"
+  },
+  "homepage": "https://github.com/NikitaBerezhnyj/vitryla-ui#readme",
   "license": "MIT",
   "type": "module",
   "sideEffects": true,
@@ -34,10 +50,17 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "check:package": "publint && attw --pack . --profile esm-only --exclude-entrypoints ./styles.css",
+    "prepublishOnly": "npm run build && npm run check:package",
+    "prepack": "node scripts/package-readme.mjs apply",
+    "postpack": "node scripts/package-readme.mjs restore",
+    "readme:restore": "node scripts/package-readme.mjs restore"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@eslint/js": "^9.39.5",
+    "@microsoft/api-extractor": "^7.60.1",
     "@storybook/addon-a11y": "^10.6.8",
     "@storybook/addon-docs": "^10.6.8",
     "@storybook/addon-vitest": "^10.6.8",
@@ -60,6 +83,7 @@
     "jsdom": "^29.1.1",
     "playwright": "latest",
     "prettier": "^3.10.1",
+    "publint": "^0.3.25",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "storybook": "^10.6.8",

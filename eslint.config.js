@@ -8,7 +8,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import sonarjs from "eslint-plugin-sonarjs";
 
 export default tseslint.config(
-  { ignores: ["dist", "storybook-static"] },
+  { ignores: ["dist", "storybook-static", "website"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   jsxA11y.flatConfigs.recommended,
@@ -31,6 +31,12 @@ export default tseslint.config(
     rules: {
       "no-console": "off",
       "sonarjs/no-duplicate-string": "off"
+    }
+  },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: globals.node
     }
   },
   storybook.configs["flat/recommended"]
