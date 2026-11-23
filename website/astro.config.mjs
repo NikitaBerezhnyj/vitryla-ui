@@ -26,9 +26,24 @@ export default defineConfig({
           items: [{ autogenerate: { directory: "reference" } }]
         },
         {
-          label: "Storybook",
-          link: "https://NikitaBerezhnyj.github.io/vitryla-ui/storybook/",
-          attrs: { target: "_blank" }
+          label: "Links",
+          items: [
+            {
+              label: "Storybook",
+              link: "https://NikitaBerezhnyj.github.io/vitryla-ui/storybook/",
+              attrs: { target: "_blank" }
+            },
+            {
+              label: "npm",
+              link: "https://www.npmjs.com/package/vitryla-ui",
+              attrs: { target: "_blank" }
+            },
+            {
+              label: "Releases",
+              link: "https://github.com/NikitaBerezhnyj/vitryla-ui/releases",
+              attrs: { target: "_blank" }
+            }
+          ]
         }
       ]
     })

@@ -5,6 +5,10 @@ sidebar:
   order: 1
 ---
 
+[![npm version](https://img.shields.io/npm/v/vitryla-ui)](https://www.npmjs.com/package/vitryla-ui)
+
+Vitryla UI is published on [npm](https://www.npmjs.com/package/vitryla-ui). It is an ESM package with TypeScript types included.
+
 ## Requirements
 
 - React 19 or newer
@@ -13,7 +17,14 @@ sidebar:
 ## Install
 
 ```sh
+# npm
 npm install vitryla-ui react react-dom
+
+# pnpm
+pnpm add vitryla-ui react react-dom
+
+# yarn
+yarn add vitryla-ui react react-dom
 ```
 
 ## Set up
@@ -35,23 +46,20 @@ export function App() {
 
 The provider applies the theme and your token overrides. Popups such as Select and Combobox render inside it, so they keep the same theme.
 
-## A first form
+The library works without the provider too (it falls back to the default tokens and the system theme), but then theme switching, token overrides and themed popups are not available.
 
-Field connects a label, a description and an error to the control inside it. You do not need to write ids or `aria-*` attributes yourself.
+## Check that it works
 
-```tsx
-import { Field, FieldDescription, FieldError, Input, Label } from "vitryla-ui";
-
-<Field invalid={Boolean(error)}>
-  <Label>Email</Label>
-  <Input type="email" />
-  <FieldDescription>We never share your email.</FieldDescription>
-  <FieldError>{error}</FieldError>
-</Field>;
-```
+If the button has a dark background with light text (or the reverse in a dark system theme), the styles are loaded. If it looks like a plain browser button, see [Troubleshooting](../../guides/troubleshooting/).
 
 ## Next.js
 
-Components ship with the `"use client"` directive, so you can import them from Server Components. Put `VitrylaProvider` in your root layout.
+Components ship with the `"use client"` directive, so you can import them from Server Components. Put the style import and `VitrylaProvider` in your root layout.
 
 The provider does not store the chosen theme. Keep it yourself (for example in a cookie or `localStorage`) and pass it with the `theme` or `defaultTheme` prop.
+
+## What to read next
+
+- [Forms](../../guides/forms/) for labels, descriptions, errors and validation
+- [Theming](../../guides/theming/) to change colors and switch themes
+- [Components](../../reference/components/) for the full list, with links to Storybook

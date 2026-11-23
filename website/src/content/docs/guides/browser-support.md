@@ -2,7 +2,7 @@
 title: Browser support
 description: Which browsers Vitryla UI supports and what degrades in older ones.
 sidebar:
-  order: 3
+  order: 6
 ---
 
 Vitryla UI targets evergreen browsers released since spring 2024:

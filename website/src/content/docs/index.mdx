@@ -8,15 +8,35 @@ hero:
     - text: Get started
       link: /vitryla-ui/getting-started/installation/
       icon: right-arrow
+    - text: View on npm
+      link: https://www.npmjs.com/package/vitryla-ui
+      variant: secondary
+      icon: external
     - text: Open Storybook
       link: https://NikitaBerezhnyj.github.io/vitryla-ui/storybook/
       variant: minimal
       icon: external
 ---
 
-## Why Vitryla UI
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
-- **Native first.** Dialog, Accordion and Popover are built on the platform: `<dialog>`, `<details>` and the Popover API.
-- **Composable.** Components are made of small parts, so you can assemble your own without hacks.
-- **Themeable.** Override a few tokens, or switch between light, dark and system themes.
-- **Accessible by default.** Labels, descriptions, errors and keyboard support work out of the box.
+[![npm version](https://img.shields.io/npm/v/vitryla-ui)](https://www.npmjs.com/package/vitryla-ui)
+
+```sh
+npm install vitryla-ui react react-dom
+```
+
+<CardGrid>
+  <Card title="Native first" icon="rocket">
+    Dialog, Accordion and Popover are built on `<dialog>`, `<details>` and the Popover API, so focus, `Esc` and screen reader support come from the browser.
+  </Card>
+  <Card title="Composable" icon="puzzle">
+    Components are made of small parts. Combobox, for example, is an input, a list and items that you can arrange yourself.
+  </Card>
+  <Card title="Themeable" icon="pencil">
+    Change a few tokens, or switch between light, dark and system themes. Your own CSS always wins over the library styles.
+  </Card>
+  <Card title="Accessible by default" icon="approve-check">
+    Labels, descriptions, errors, keyboard support and visible focus work out of the box.
+  </Card>
+</CardGrid>

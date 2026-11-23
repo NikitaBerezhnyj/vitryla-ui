@@ -2,7 +2,7 @@
 title: Accessibility
 description: What Vitryla UI does for you, and what is still up to you.
 sidebar:
-  order: 2
+  order: 5
 ---
 
 ## What is built in
