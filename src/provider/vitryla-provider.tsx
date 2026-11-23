@@ -7,6 +7,7 @@ import {
   type HTMLAttributes
 } from "react";
 import type { Theme, TokenOverrides } from "../tokens/types";
+import { PortalContainerContext } from "./portal-container";
 import { tokensToStyle } from "./tokens-to-style";
 
 interface ThemeContextValue {
@@ -32,6 +33,7 @@ export function VitrylaProvider({
   ...props
 }: VitrylaProviderProps) {
   const [uncontrolledTheme, setUncontrolledTheme] = useState<Theme>(defaultTheme);
+  const [container, setContainer] = useState<HTMLDivElement | null>(null);
   const theme = themeProp ?? uncontrolledTheme;
 
   const setTheme = useCallback(
@@ -47,7 +49,14 @@ export function VitrylaProvider({
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      <div data-vitryla-theme={theme} style={{ ...tokenStyle, ...style }} {...props} />
+      <PortalContainerContext.Provider value={container}>
+        <div
+          ref={setContainer}
+          data-vitryla-theme={theme}
+          style={{ ...tokenStyle, ...style }}
+          {...props}
+        />
+      </PortalContainerContext.Provider>
     </ThemeContext.Provider>
   );
 }

@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     lib: { entry: "src/index.ts", formats: ["es"], cssFileName: "styles" },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: ["react", "react-dom", "react/jsx-runtime", /^@base-ui\/react(\/.*)?$/],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",

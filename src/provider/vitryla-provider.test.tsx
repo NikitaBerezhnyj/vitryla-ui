@@ -1,10 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { VitrylaProvider, useTheme } from "./vitryla-provider";
+import { usePortalContainer } from "./portal-container";
 
 function ThemeButton() {
   const { theme, setTheme } = useTheme();
   return <button onClick={() => setTheme("dark")}>{theme}</button>;
+}
+
+function ContainerProbe() {
+  const container = usePortalContainer();
+  return <span>{container ? container.getAttribute("data-vitryla-theme") : "none"}</span>;
 }
 
 describe("VitrylaProvider", () => {
@@ -44,5 +50,21 @@ describe("VitrylaProvider", () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     expect(() => render(<ThemeButton />)).toThrow(/VitrylaProvider/);
     spy.mockRestore();
+  });
+});
+
+describe("portal container", () => {
+  it("exposes the provider root element as the portal container", () => {
+    render(
+      <VitrylaProvider theme="dark">
+        <ContainerProbe />
+      </VitrylaProvider>
+    );
+    expect(screen.getByText("dark")).toBeInTheDocument();
+  });
+
+  it("has no portal container outside of VitrylaProvider", () => {
+    render(<ContainerProbe />);
+    expect(screen.getByText("none")).toBeInTheDocument();
   });
 });
