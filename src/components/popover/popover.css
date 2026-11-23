@@ -19,4 +19,10 @@
             position-try-fallbacks: flip-block;
         }
     }
+
+    @supports not selector(:popover-open) {
+        .vitryla-popover {
+            display: none;
+        }
+    }
 }

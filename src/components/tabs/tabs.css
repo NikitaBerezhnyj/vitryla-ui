@@ -1,0 +1,49 @@
+@layer vitryla.components {
+    .vitryla-tabs-list {
+        display: flex;
+        gap: 0.25rem;
+        border-block-end: 1px solid var(--vitryla-color-border);
+    }
+
+    .vitryla-tabs-trigger {
+        margin-block-end: -1px;
+        padding: 0.5rem 1rem;
+        border: 0;
+        border-block-end: 2px solid transparent;
+        background: transparent;
+        color: var(--vitryla-color-muted-foreground);
+        font: inherit;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .vitryla-tabs-trigger:hover:not(:disabled) {
+        color: var(--vitryla-color-foreground);
+    }
+
+    .vitryla-tabs-trigger[aria-selected='true'] {
+        border-block-end-color: var(--vitryla-color-primary);
+        color: var(--vitryla-color-foreground);
+    }
+
+    .vitryla-tabs-trigger:focus-visible,
+    .vitryla-tabs-content:focus-visible {
+        outline: 2px solid var(--vitryla-color-focus-ring);
+        outline-offset: -2px;
+    }
+
+    .vitryla-tabs-trigger:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .vitryla-tabs-content {
+        padding-block: 1rem;
+    }
+
+    @media (forced-colors: active) {
+        .vitryla-tabs-trigger[aria-selected='true'] {
+            border-block-end-color: Highlight;
+        }
+    }
+}
