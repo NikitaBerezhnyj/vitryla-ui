@@ -3,6 +3,7 @@
         "autodocs",
         "circlehollow",
         "describedby",
+        "noninteractive",
         "sonarjs",
         "testid",
         "theming",

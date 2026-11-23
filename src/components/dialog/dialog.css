@@ -1,0 +1,31 @@
+@layer vitryla.components {
+    .vitryla-dialog {
+        box-sizing: border-box;
+        inline-size: min(32rem, calc(100vw - 2rem));
+        max-block-size: calc(100dvh - 2rem);
+        padding: 0;
+        border: 1px solid var(--vitryla-color-border);
+        border-radius: var(--vitryla-radius-lg);
+        background-color: var(--vitryla-color-background);
+        color: var(--vitryla-color-foreground);
+        font-family: var(--vitryla-font-sans);
+        box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+    }
+
+    .vitryla-dialog::backdrop {
+        background-color: rgb(0 0 0 / 50%);
+    }
+
+    .vitryla-dialog-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .vitryla-dialog-description {
+        margin: 0;
+        color: var(--vitryla-color-muted-foreground);
+        font-size: 0.875rem;
+    }
+}

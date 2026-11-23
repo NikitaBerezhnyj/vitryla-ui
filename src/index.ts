@@ -12,6 +12,8 @@ export * from "./components/badge";
 export * from "./components/heading";
 export * from "./components/link";
 export * from "./components/spinner";
+export * from "./components/accordion";
+export * from "./components/dialog";
 
 export * from "./provider";
 
