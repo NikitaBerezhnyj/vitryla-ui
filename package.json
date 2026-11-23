@@ -1,7 +1,7 @@
 {
   "name": "vitryla-ui",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "Vitryla UI: React UI kit with composable primitives, theming and accessibility defaults",
   "author": "NikitaBerezhnyj",
   "keywords": [
