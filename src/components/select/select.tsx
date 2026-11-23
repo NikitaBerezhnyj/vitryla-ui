@@ -40,7 +40,9 @@ export function SelectTrigger({ placeholder, className, ...props }: SelectTrigge
       className={cx("vitryla-select-trigger", className)}
     >
       <BaseSelect.Value className="vitryla-select-value" placeholder={placeholder} />
-      <BaseSelect.Icon className="vitryla-select-icon" aria-hidden="true" />
+      <BaseSelect.Icon className="vitryla-select-icon" aria-hidden="true">
+        <span />
+      </BaseSelect.Icon>
     </BaseSelect.Trigger>
   );
 }
@@ -75,7 +77,9 @@ export type SelectItemProps = Omit<BaseSelect.Item.Props, "className"> & {
 export function SelectItem({ className, children, ...props }: SelectItemProps) {
   return (
     <BaseSelect.Item {...props} className={cx("vitryla-select-item", className)}>
-      <BaseSelect.ItemIndicator className="vitryla-select-item-indicator" />
+      <BaseSelect.ItemIndicator className="vitryla-select-item-indicator">
+        <span />
+      </BaseSelect.ItemIndicator>
       <BaseSelect.ItemText className="vitryla-select-item-text">{children}</BaseSelect.ItemText>
     </BaseSelect.Item>
   );

@@ -50,11 +50,15 @@ export function ComboboxInput({
         <BaseCombobox.Clear
           className="vitryla-combobox-button vitryla-combobox-clear"
           aria-label={clearLabel}
-        />
+        >
+          <span />
+        </BaseCombobox.Clear>
         <BaseCombobox.Trigger
           className="vitryla-combobox-button vitryla-combobox-trigger"
           aria-label={triggerLabel}
-        />
+        >
+          <span />
+        </BaseCombobox.Trigger>
       </div>
     </BaseCombobox.InputGroup>
   );
@@ -107,7 +111,9 @@ export type ComboboxItemProps = Omit<BaseCombobox.Item.Props, "className"> & {
 export function ComboboxItem({ className, children, ...props }: ComboboxItemProps) {
   return (
     <BaseCombobox.Item {...props} className={cx("vitryla-select-item", className)}>
-      <BaseCombobox.ItemIndicator className="vitryla-select-item-indicator" />
+      <BaseCombobox.ItemIndicator className="vitryla-select-item-indicator">
+        <span />
+      </BaseCombobox.ItemIndicator>
       <span className="vitryla-select-item-text">{children}</span>
     </BaseCombobox.Item>
   );
