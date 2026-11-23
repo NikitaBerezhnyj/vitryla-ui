@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/NikitaBerezhnyj/vitryla-ui/issues"
   },
-  "homepage": "https://github.com/NikitaBerezhnyj/vitryla-ui#readme",
+  "homepage": "https://nikitaberezhnyj.github.io/vitryla-ui/",
   "license": "MIT",
   "type": "module",
   "sideEffects": true,
